@@ -1,0 +1,131 @@
+<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+    <form [formGroup]="FormData" (ngSubmit)="onSubmitForm(FormData)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title  fw-bold" id="createprojectlLabel"> {{Header}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput877" class="form-label">Name</label>
+                    <input type="text" class="form-control" formControlName="name" id="exampleFormControlInput877"
+                        placeholder="Explain what the Project Name">
+                    <div *ngIf="FormData.controls['name'].touched && !FormData.controls['name'].valid">
+                        <span class="text-danger" *ngIf="FormData.controls['name'].hasError('required')">Name is
+                            required</span>
+                        <span class="text-danger" *ngIf="FormData.controls['name'].hasError('minlength')">Name must be
+                            more than 3
+                            char</span>
+                        <span class="text-danger" *ngIf="FormData.controls['name'].hasError('maxlength')">Name cant not
+                            be more than 20 char
+                            long</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlInput977" class="form-label">Small Description</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput977"
+                        formControlName="description" placeholder="Explain what the Project Name">
+                    <div *ngIf="FormData.controls['description'].touched && !FormData.controls['description'].valid">
+                        <span class="text-danger"
+                            *ngIf="FormData.controls['description'].hasError('required')">Description is
+                            required</span>
+                        <span class="text-danger"
+                            *ngIf="FormData.controls['description'].hasError('minlength')">Description must be more
+                            than 10 char</span>
+                        <span class="text-danger"
+                            *ngIf="FormData.controls['description'].hasError('maxlength')">Description cant not be
+                            more than 50 char long</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Based On</label>
+                    <ng-multiselect-dropdown class="mulitSelect-form-select"
+                        aria-label="Default select Project Category" [settings]="dropdownSettings"
+                        formControlName="category" [data]="technology">
+                    </ng-multiselect-dropdown>
+                    <div *ngIf="FormData.controls['category'].touched && !FormData.controls['category'].valid">
+                        <span class="text-danger" *ngIf="FormData.controls['category'].hasError('required')">
+                            technology is required
+                        </span>
+                    </div>
+                </div>
+                <div class="deadline-form">
+                        <div class="row g-3 mb-3">
+                            <div class="col">
+                                <div>
+                                    <label for="projectUrl" class="form-label">Project URL</label>
+                                    <input type="text" formControlName="projectUrl" class="form-control" id="projectUrl"
+                                        placeholder="Project Url">
+                                    <div
+                                        *ngIf="FormData.controls['projectUrl'].touched && !FormData.controls['projectUrl'].valid">
+                                        <span class="text-danger">Project Url Required</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div>
+                                    <label for="GitHubUrl" class="form-label">GitHub URL(optional)</label>
+                                    <input type="text" formControlName="GitHubUrl" class="form-control" id="GitHubUrl"
+                                        placeholder="GitHub Url">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-3 mb-3">
+                            <div class="col">
+                                <div style="margin-top:6px">
+                                    <label for="formFileMultipleoneone" class="form-label">Profile Image</label>
+                                    <input class="form-control" (change)="selectedImage($event)" formControlName="image"
+                                        type="file" accept="image/*" id="formFileMultipleoneone">
+                                </div>
+                                <div *ngIf="FormData.controls['image'].touched && !FormData.controls['image'].valid">
+                                    <span class="text-danger"
+                                        *ngIf="FormData.controls['image'].hasError('required')">Image Required</span>
+                                </div>
+                                <div style="margin-top:6px">
+                                    <label for="exampleFormControlInput177" class="form-label">Developer Name</label>
+                                    <input type="text" formControlName="developerName" class="form-control"
+                                        id="exampleFormControlInput177" placeholder="User Name">
+                                    <div
+                                        *ngIf="FormData.controls['developerName'].touched && !FormData.controls['developerName'].valid">
+                                        <span class="text-danger">Developer Name Required</span>
+
+                                    </div>
+                                </div>
+
+                                <div style="margin-top:6px">
+                                    <label for="datepickerded" class="form-label">Project Start Date</label>
+                                    <input type="date" formControlName="startDate" class="form-control"
+                                        id="datepickerded">
+                                </div>
+
+                                <div style="margin-top:6px">
+                                    <label for="priority" class="form-label">Priority</label>
+                                    <select class="form-select" id="priority" formControlName="priority"
+                                        aria-label="Default select Priority">
+                                        <option value="" disabled selected>Selecct</option>
+                                        <option value="Highest">Highest</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="Low">Low</option>
+                                        <option value="Lowest">Lowest</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <img class="selectedImage" [src]="imgURL">
+                            </div>
+                        </div>
+                </div>
+                <!-- <div class="mb-3">
+                    <label for="exampleFormControlTextarea78" class="form-label">Description (optional)</label>
+                    <textarea class="form-control" formControlName="detailDescription" id="exampleFormControlTextarea78"
+                        rows="3" placeholder="Add any extra details about the request"></textarea>
+                </div> -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Add More Details</button>
+                <button type="button" class="btn btn-danger" (click)="resetForm()">Reset</button>
+                <button type="submit" [disabled]="!FormData.valid" data-bs-dismiss="modal" class="btn btn-success">Create</button>
+            </div>
+        </div>
+    </form>
+</div>

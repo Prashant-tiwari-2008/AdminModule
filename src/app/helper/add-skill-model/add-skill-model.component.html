@@ -1,0 +1,78 @@
+<div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+    <form [formGroup]="AddSkills" (ngSubmit)="onSubmitForm(AddSkills)">
+        <div class="modal-content" style="width: 800px;">
+            <div class="modal-header">
+                <h5 class="modal-title  fw-bold" id="createprojectlLabel"> Add SKills {{skillId}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" (click)="resetForm()"
+                    aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3 mb-3">
+                    <div class="col-sm-8">
+                        <div class="mb-3">
+                            <label for="Icon" class="form-label">Icon</label>
+                            <input type="file" accept="image/*" class="form-control" formControlName="Icon" id="Icon"
+                                (change)="selectedImage($event)" placeholder="Explain what the Project Icon">
+                            <div *ngIf="AddSkills.controls['Icon'].touched && !AddSkills.controls['Icon'].valid">
+                                <span class="text-danger" *ngIf="AddSkills.controls['Icon'].hasError('required')">Icon
+                                    is
+                                    required</span>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Name" class="form-label">Name</label>
+                            <input type="text" class="form-control" formControlName="Name" id="Name"
+                                placeholder="Explain what the Project Name">
+                            <div *ngIf="AddSkills.controls['Name'].touched && !AddSkills.controls['Name'].valid">
+                                <span class="text-danger" *ngIf="AddSkills.controls['Name'].hasError('required')">Name
+                                    is
+                                    required</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <img class="selectedskill" [src]="imgURL">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="StartDate" class="form-label">Start Date</label>
+                    <input type="date" class="form-control" formControlName="StartDate" id="StartDate"
+                        placeholder="Explain what the Project Icon">
+                    <div *ngIf="AddSkills.controls['StartDate'].touched && !AddSkills.controls['StartDate'].valid">
+                        <span class="text-danger" *ngIf="AddSkills.controls['StartDate'].hasError('required')">Skill
+                            Start Date is
+                            required</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Rating" class="form-label">Rate SKill</label>
+                    <input type="number" class="form-control" formControlName="Rating" id="Rating"
+                        placeholder="Please Rate Your SKill">
+                    <div *ngIf="AddSkills.controls['Rating'].touched && !AddSkills.controls['Rating'].valid">
+                        <span class="text-danger" *ngIf="AddSkills.controls['Rating'].hasError('required')">Rating is
+                            required</span>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Status" class="form-label">Skill</label>
+                    <select class="form-select" id="Status" formControlName="Status">
+                        <option value="" disabled selected>Selecct</option>
+                        <option value="Novice">Novice</option>
+                        <option value="beginner">beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Expert">Expert</option>
+                    </select>
+                    <div *ngIf="AddSkills.controls['Status'].touched && !AddSkills.controls['Status'].valid">
+                        <span class="text-danger" *ngIf="AddSkills.controls['Status'].hasError('required')">Status is
+                            required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" (click)="resetForm()">Reset</button>
+                <button type="submit" [disabled]="!AddSkills.valid" data-bs-dismiss="modal"
+                    class="btn btn-success">Add</button>
+            </div>
+        </div>
+    </form>
+</div>

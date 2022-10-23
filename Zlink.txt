@@ -1,0 +1,2 @@
+https://www.c-sharpcorner.com/article/multi-select-dropdown-in-angular/
+https://www.npmjs.com/package/ng-multiselect-dropdown

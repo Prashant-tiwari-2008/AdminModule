@@ -1,0 +1,7 @@
+.selectedskill {
+    width: 250px;
+    max-width: 250px;
+    height: 160px;
+    max-height: 250px;
+    object-fit: contain;
+}

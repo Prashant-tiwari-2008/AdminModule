@@ -1,0 +1,69 @@
+<div class="body d-flex py-lg-3 py-md-2">
+    <div class="container-xxl">
+        <div class="row align-items-center">
+            <div class="border-0 mb-4">
+                <div
+                    class="card-header py-3 no-bg bg-transparent d-flex align-items-center px-0 justify-content-between border-bottom flex-wrap">
+                    <h3 class="fw-bold mb-0">SKill</h3>
+                    <div class="col-auto d-flex">
+                        <button type="button" class="btn btn-dark ms-1 " data-bs-toggle="modal"
+                            data-bs-target="#createproject"><i class="icofont-plus-circle me-2 fs-6"></i>Add
+                            SKill</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card mb-3">
+            <!-- <div class="card-header py-3  bg-transparent border-bottom-0">
+                <h6 class="mb-0 fw-bold ">Datatable</h6>
+            </div> -->
+            <div class="card-body">
+                <table id="patient-table" class="table table-hover align-middle mb-0" style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Icon</th>
+                            <th>start</th>
+                            <th>Experience</th>
+                            <th>Rating</th>
+                            <th>Status</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let skill of skillList;index as i">
+                            <td>{{i+1}}</td>
+                            <td><img [src]="skill.image" class="avatar sm rounded-circle me-2"
+                                    alt="profile-image"><span>{{skill.Name}} </span></td>
+                            <td>{{skill.StartDate}}</td>
+                            <td>May 13, 2021</td>
+                            <td>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                        role="progressbar" [ngStyle]="{'width': skill.Rating + '%'}" aria-valuenow="10"
+                                        aria-valuemin="10" aria-valuemax="100"> {{skill.Rating}}%</div>
+                                </div>
+                            </td>
+                            <td><span class="badge bg-info">{{skill.Status}}</span></td>
+                            <td>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#createproject"
+                                    class="btn btn-outline-secondary" (click)="editSkills(skill.key)"
+                                    data-bs-toggle="modal"><i class="icofont-edit text-success"></i></button>
+
+                                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#deleteproject" (click)="deleteSkills(skill.key)"><i
+                                        class="icofont-ui-delete text-danger"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createproject" tabindex="-1" aria-hidden="true">
+    <app-add-skill-model [skillId]="skillId"></app-add-skill-model>
+</div>
+<ngx-spinner type="ball-scale-multiple"></ngx-spinner>

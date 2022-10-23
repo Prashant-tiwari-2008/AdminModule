@@ -1,0 +1,15 @@
+.project-card {
+    height: 160px;
+    width: 190px;
+}
+
+div>span {
+    margin: 0px 5px 5px 5px;
+}
+
+.skillheading {
+    font-size: larger;
+    font-weight: 700;
+    margin: 0px;   
+    display: inline-block;
+}

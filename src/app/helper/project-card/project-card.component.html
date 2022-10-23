@@ -1,0 +1,55 @@
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between mt-5">
+            <div class="lesson_name">
+                <div class="project-block light-info-bg">
+                    <!-- <i class="icofont-paint"></i> -->
+                    <img class="project-card" src={{project.image}}>
+                </div>
+                <!-- <span class="small text-muted project_name fw-bold"> Social Geek Made
+                    </span> -->
+                <h6 class="mb-0 fw-bold  fs-6  mb-2">{{project.name}}</h6>
+            </div>
+            <div class="btn-group" role="group" aria-label="Basic outlined example">
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                    data-bs-target="#editproject"><i class="icofont-edit text-success"></i></button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                    data-bs-target="#deleteproject" (click)="deleteProject(project.key)"><i
+                        class="icofont-ui-delete text-danger"></i></button>
+            </div>
+        </div>
+        <div class="d-flex align-items-center mt-3">
+            <div>
+                <p class="skillheading">Skill :</p>
+                <span class="badge bg-info" *ngFor="let tech of project.category">{{tech.label}}</span>
+            </div>
+        </div>
+        <div class="row g-2 pt-4">
+            <div class="d-flex flex-wrap align-items-end ct-btn-set justify-content-between">
+                <div class="btn-group mt-2" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#editproject"><i class="icofont-eye-alt text-success"></i></button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#deleteproject"><i class="text-danger">65</i></button>
+                </div>
+
+                <div class="btn-group mt-2" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-primary">Live Demo </button>
+                </div>
+
+                <div class="btn-group mt-2" role="group" aria-label="Basic outlined example">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#editproject"><i class="icofont-ui-calendar text-success"></i></button>
+                    <button type="button" class="btn btn-outline-secondary" data-bs-toggle="modal"
+                        data-bs-target="#deleteproject"><i class="text-danger">{{project.startDate}}</i></button>
+                </div>
+
+            </div>
+        </div>
+        <div class="dividers-block"></div>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+            <p> <b style="color: green;">Description:</b> {{project.description}}...</p>
+        </div>
+    </div>
+</div>
+<!-- </div> -->
